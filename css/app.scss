@@ -1,4 +1,14 @@
+// layouts
+@use "layouts/document";
+@use "layouts/form";
+
 // components
-@use "../shared/scss/template/base/components/accordion";
+@use "../Shared/scss/template/base/components/accordion";
+@use "components/card";
+
+@include document.base;
+@include form.base;
 
 @include accordion.base;
+
+@include card.base;

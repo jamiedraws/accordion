@@ -61,7 +61,7 @@ if (!legacy) {
 module.exports = {
     target: target,
     mode: mode,
-    entry: createEntryContext(inputFilename, /(ts)/i),
+    entry: createEntryContext(inputFilename, /(ts|scss)/i),
     output: {
         filename: `./[name]/${outputFilename}`,
         path: path.resolve(__dirname),

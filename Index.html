@@ -5,96 +5,136 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accordion</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400&amp;display=swap"
+        rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/app.css">
-    <script defer src="js/app.js"></script>
+    <!-- <script nomodule defer src="js/app.es5.js"></script> -->
+    <script type="module" src="js/app.es5.js"></script>
 </head>
 <body>
-    <h1>Accordion Test</h1>
-    <div
-        class="accordion accordion--default"
-        data-accordion-toggle
-        data-accordion-many-containers
-    >
-        <div class="card">
-            <h2 class="accordion__header card__header">
-                <button
-                    class="accordion__button"
-                    aria-controls="first-header-section"
-                    id="first-header-title"
-                >
-                    Header 1
-                </button>
-            </h2>
-            <section
-                aria-labelledby="first-header-title"
-                id="first-header-section"
-                class="card__section accordion__section"
+    <main aria-labelledby="main-title" class="view section">
+        <div class="view__in section__in">
+            <form action="/" class="form">
+                <fieldset class="form__fieldset">
+                    <h1 id="main-title">Accordion</h1>
+                    <div class="form__settings">
+                        <div class="form__group">
+                            <label class="form__checkbox-label">
+                                <input type="checkbox" name="accordion" id="accordion-toggle" aria-controls="accordion">
+                                <span class="form__label">
+                                    <span class="form__checkbox"></span>
+                                    <span>Toggle</span>
+                                </span>
+                            </label>
+                            <label class="form__checkbox-label">
+                                <input type="checkbox" name="accordion" id="accordion-many-containers" aria-controls="accordion">
+                                <span class="form__label">
+                                    <span class="form__checkbox"></span>
+                                    <span>Many Containers</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div
+                id="accordion"
+                class="accordion accordion--default"
             >
-                <div class="card__content">
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Tempore, labore. Laboriosam unde cumque
-                        aspernatur minus dicta ratione adipisci rem quaerat
-                        magni dignissimos tempora architecto libero pariatur
-                        eveniet sed modi sint et, alias placeat doloremque?
-                        Aliquid, cupiditate necessitatibus, excepturi
-                        placeat obcaecati amet ipsum quis tempore sunt dicta
-                        quibusdam debitis, quia voluptatem.
-                    </p>
+                <div class="card">
+                    <h2 class="accordion__header card__header">
+                        <button
+                            class="accordion__button"
+                            aria-controls="first-header-section"
+                            id="first-header-title"
+                        >
+                            Header 1
+                        </button>
+                    </h2>
+                    <section
+                        aria-labelledby="first-header-title"
+                        id="first-header-section"
+                        class="card__section accordion__section"
+                    >
+                        <div class="card__content">
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Tempore, labore. Laboriosam unde cumque
+                                aspernatur minus dicta ratione adipisci rem quaerat
+                                magni dignissimos tempora architecto libero pariatur
+                                eveniet sed modi sint et, alias placeat doloremque?
+                                Aliquid, cupiditate necessitatibus, excepturi
+                                placeat obcaecati amet ipsum quis tempore sunt dicta
+                                quibusdam debitis, quia voluptatem.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Tempore, labore. Laboriosam unde cumque
+                                aspernatur minus dicta ratione adipisci rem quaerat
+                                magni dignissimos tempora architecto libero pariatur
+                                eveniet sed modi sint et, alias placeat doloremque?
+                                Aliquid, cupiditate necessitatibus, excepturi
+                                placeat obcaecati amet ipsum quis tempore sunt dicta
+                                quibusdam debitis, quia voluptatem.
+                            </p>
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-        <div class="card">
-            <h2 class="accordion__header card__header">
-                <button
-                    class="accordion__button"
-                    aria-controls="second-header-section"
-                    aria-expanded="true"
-                    id="second-header-title"
-                >
-                    Header 2
-                </button>
-            </h2>
-            <section
-                id="second-header-section"
-                aria-labelledby="second-header-title"
-                class="card__section accordion__section"
-            >
-                <div class="card__content">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Soluta suscipit impedit neque ipsam dolor
-                        pariatur quasi magni? Iusto, porro qui.
-                    </p>
+                <div class="card">
+                    <h2 class="accordion__header card__header">
+                        <button
+                            class="accordion__button"
+                            aria-controls="second-header-section"
+                            aria-expanded="true"
+                            id="second-header-title"
+                        >
+                            Header 2
+                        </button>
+                    </h2>
+                    <section
+                        id="second-header-section"
+                        aria-labelledby="second-header-title"
+                        class="card__section accordion__section"
+                    >
+                        <div class="card__content">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing
+                                elit. Soluta suscipit impedit neque ipsam dolor
+                                pariatur quasi magni? Iusto, porro qui.
+                            </p>
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-        <div class="card">
-            <h2 class="accordion__header card__header">
-                <button
-                    class="accordion__button"
-                    aria-controls="third-header-section"
-                    id="third-header-title"
-                >
-                    Header 3
-                </button>
-            </h2>
-            <section
-                aria-labelledby="third-header-title"
-                id="third-header-section"
-                class="card__section accordion__section"
-            >
-                <div class="card__content">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Porro consectetur officia nulla ipsum. In
-                        dicta incidunt dignissimos expedita voluptate quo
-                        soluta quaerat est aliquam nobis id sint, nulla
-                        placeat ab.
-                    </p>
+                <div class="card">
+                    <h2 class="accordion__header card__header">
+                        <button
+                            class="accordion__button"
+                            aria-controls="third-header-section"
+                            id="third-header-title"
+                        >
+                            Header 3
+                        </button>
+                    </h2>
+                    <section
+                        aria-labelledby="third-header-title"
+                        id="third-header-section"
+                        class="card__section accordion__section"
+                    >
+                        <div class="card__content">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing
+                                elit. Porro consectetur officia nulla ipsum. In
+                                dicta incidunt dignissimos expedita voluptate quo
+                                soluta quaerat est aliquam nobis id sint, nulla
+                                placeat ab.
+                            </p>
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>

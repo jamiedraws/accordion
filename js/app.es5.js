@@ -2363,7 +2363,7 @@ for (var COLLECTION_NAME in DOMIterables) {
 /* harmony import */ var core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "../../../DTM/SVN/Websites/node_modules/core-js/modules/es.array.find.js");
 /* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/html */ "./Shared/ts/utils/html.ts");
+/* harmony import */ var Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Shared/ts/utils/html */ "./Shared/ts/utils/html.ts");
 
 
 
@@ -2389,8 +2389,8 @@ var Accordion = /*#__PURE__*/ function () {
         this.controllers = void 0;
         this.containers = void 0;
         this.root = root != null ? root : document.querySelector(".accordion");
-        this.controllers = (0,_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__button"));
-        this.containers = (0,_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__section"));
+        this.controllers = (0,Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__button"));
+        this.containers = (0,Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__section"));
         Accordion.initialize(this);
     }
     /**

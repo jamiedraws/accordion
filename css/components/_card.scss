@@ -1,0 +1,26 @@
+$select: ".card" !default;
+
+// abstracts
+@use "Shared/scss/template/base/abstracts/copy";
+
+@mixin base {
+    #{$select} {
+        border: 0.05rem solid;
+        margin: 1rem 0;
+
+        button,
+        &__section {
+            padding: 1rem;
+        }
+
+        &__section {
+            border-top: 0.05rem solid;
+        }
+
+        &__content {
+            @include copy.separate();
+        }
+
+        @content;
+    }
+}
