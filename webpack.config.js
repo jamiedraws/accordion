@@ -109,6 +109,7 @@ module.exports = {
                 include: path.resolve(__dirname),
                 exclude: /node_modules/,
                 options: {
+                    transpileOnly: true,
                     onlyCompileBundledFiles: true
                 }
             },

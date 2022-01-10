@@ -1,4 +1,4 @@
 // components
-import Accordion from "../--force/ts/components/accordion";
+import Accordion from "Shared/ts/components/accordion";
 
 const accordion = new Accordion();
