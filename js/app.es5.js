@@ -2767,7 +2767,29 @@ var __webpack_exports__ = {};
 /* harmony import */ var Shared_ts_components_accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Shared/ts/components/accordion */ "./Shared/ts/components/accordion.ts");
 // components
 
+var toggleAccordionToggleState = function toggleAccordionToggleState(accordion, control) {
+    if (control.checked) {
+        accordion.setAttribute("data-accordion-toggle", "");
+        return;
+    }
+    accordion.removeAttribute("data-accordion-toggle");
+};
+var toggleAccordionContainerState = function toggleAccordionContainerState(accordion, control) {
+    if (control.checked) {
+        accordion.setAttribute("data-accordion-many-containers", "");
+        return;
+    }
+    accordion.removeAttribute("data-accordion-many-containers");
+};
 var accordion = new Shared_ts_components_accordion__WEBPACK_IMPORTED_MODULE_0__.default();
+var accordionToggleControl = document.querySelector("#accordion-toggle");
+accordionToggleControl.addEventListener("change", function () {
+    toggleAccordionToggleState(accordion.root, accordionToggleControl);
+});
+var accordionContainerControl = document.querySelector("#accordion-many-containers");
+accordionContainerControl.addEventListener("change", function () {
+    toggleAccordionContainerState(accordion.root, accordionContainerControl);
+});
 
 }();
 /******/ })()
