@@ -2,9 +2,11 @@
 import Accordion from "Shared/ts/components/accordion";
 
 const toggleAccordionToggleState = (
-    accordion: Element,
+    accordion: Element | null,
     control: HTMLInputElement
 ): void => {
+    if (!accordion) return;
+
     if (control.checked) {
         accordion.setAttribute("data-accordion-toggle", "");
         return;
@@ -14,9 +16,11 @@ const toggleAccordionToggleState = (
 };
 
 const toggleAccordionContainerState = (
-    accordion: Element,
+    accordion: Element | null,
     control: HTMLInputElement
 ): void => {
+    if (!accordion) return;
+
     if (control.checked) {
         accordion.setAttribute("data-accordion-many-containers", "");
         return;
@@ -26,8 +30,6 @@ const toggleAccordionContainerState = (
 };
 
 const accordion = new Accordion();
-
-console.log(accordion);
 
 const accordionToggleControl = document.querySelector(
     "#accordion-toggle"
