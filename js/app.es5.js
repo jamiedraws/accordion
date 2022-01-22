@@ -2782,6 +2782,7 @@ var toggleAccordionContainerState = function toggleAccordionContainerState(accor
     accordion.removeAttribute("data-accordion-many-containers");
 };
 var accordion = new Shared_ts_components_accordion__WEBPACK_IMPORTED_MODULE_0__.default();
+console.log(accordion);
 var accordionToggleControl = document.querySelector("#accordion-toggle");
 accordionToggleControl.addEventListener("change", function () {
     toggleAccordionToggleState(accordion.root, accordionToggleControl);

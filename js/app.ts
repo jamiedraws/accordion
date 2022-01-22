@@ -27,6 +27,8 @@ const toggleAccordionContainerState = (
 
 const accordion = new Accordion();
 
+console.log(accordion);
+
 const accordionToggleControl = document.querySelector(
     "#accordion-toggle"
 ) as HTMLInputElement;
