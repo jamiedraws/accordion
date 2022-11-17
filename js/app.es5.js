@@ -2386,11 +2386,13 @@ var Accordion = /*#__PURE__*/ function () {
      */
     function Accordion(root) {
         this.root = void 0;
-        this.controllers = void 0;
-        this.containers = void 0;
+        this.controllers = [];
+        this.containers = [];
         this.root = root != null ? root : document.querySelector(".accordion");
-        this.controllers = (0,Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__button"));
-        this.containers = (0,Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__section"));
+        if (this.root) {
+            this.controllers = (0,Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__button"));
+            this.containers = (0,Shared_ts_utils_html__WEBPACK_IMPORTED_MODULE_5__.enumerateElements)(this.root.querySelectorAll(".accordion__section"));
+        }
         Accordion.initialize(this);
     }
     /**
@@ -2466,14 +2468,18 @@ var Accordion = /*#__PURE__*/ function () {
         return index >= 0 ? context.controllers[index] : this.getLastController(context);
     };
     Accordion.activateRoot = function activateRoot(context) {
-        context.root.classList.add("accordion--is-focused");
+        var _context$root;
+        (_context$root = context.root) == null ? void 0 : _context$root.classList.add("accordion--is-focused");
     };
     Accordion.deactivateRoot = function deactivateRoot(context) {
-        context.root.classList.remove("accordion--is-focused");
+        var _context$root2;
+        (_context$root2 = context.root) == null ? void 0 : _context$root2.classList.remove("accordion--is-focused");
     };
     Accordion.activateContainerByController = function activateContainerByController(controller, context) {
         if (context.isController(controller)) {
             var container = context.getContainerByController(controller);
+            if (!container)
+                return;
             if (context.isContainer(container)) {
                 controller.setAttribute("aria-expanded", "true");
                 container.removeAttribute("hidden");
@@ -2486,6 +2492,8 @@ var Accordion = /*#__PURE__*/ function () {
     Accordion.deactivateContainerByController = function deactivateContainerByController(controller, context) {
         if (context.isController(controller)) {
             var container = context.getContainerByController(controller);
+            if (!container)
+                return;
             if (context.isContainer(container)) {
                 controller.setAttribute("aria-expanded", "false");
                 container.setAttribute("hidden", "");
@@ -2530,11 +2538,13 @@ var Accordion = /*#__PURE__*/ function () {
         });
     };
     _proto.willToggle = function willToggle() {
+        var _this$root$hasAttribu, _this$root;
         var manyContainers = this.allowManyContainers();
-        return manyContainers ? manyContainers : this.root.hasAttribute("data-accordion-toggle");
+        return manyContainers ? manyContainers : (_this$root$hasAttribu = (_this$root = this.root) == null ? void 0 : _this$root.hasAttribute("data-accordion-toggle")) != null ? _this$root$hasAttribu : false;
     };
     _proto.allowManyContainers = function allowManyContainers() {
-        return this.root.hasAttribute("data-accordion-many-containers");
+        var _this$root$hasAttribu2, _this$root2;
+        return (_this$root$hasAttribu2 = (_this$root2 = this.root) == null ? void 0 : _this$root2.hasAttribute("data-accordion-many-containers")) != null ? _this$root$hasAttribu2 : false;
     };
     _proto.getContainerByController = function getContainerByController(controller) {
         return this.containers.find(function (container) {
@@ -2570,6 +2580,39 @@ var Accordion = /*#__PURE__*/ function () {
 
 /***/ }),
 
+/***/ "./Shared/ts/utils/data.ts":
+/*!*********************************!*\
+  !*** ./Shared/ts/utils/data.ts ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isObject": function() { return /* binding */ isObject; }
+/* harmony export */ });
+/* unused harmony exports isFunction, isString, isNumber, isArray, isNullOrUndefined */
+var isFunction = function isFunction(type) {
+    return typeof type === "function";
+};
+var isString = function isString(type) {
+    return typeof type === "string";
+};
+var isNumber = function isNumber(type) {
+    return typeof type === "number";
+};
+var isArray = function isArray(type) {
+    return Array.isArray(type);
+};
+var isObject = function isObject(type) {
+    return type === Object(type) && !isArray(type);
+};
+var isNullOrUndefined = function isNullOrUndefined(type) {
+    return type !== null && typeof type !== "undefined";
+};
+
+
+/***/ }),
+
 /***/ "./Shared/ts/utils/html.ts":
 /*!*********************************!*\
   !*** ./Shared/ts/utils/html.ts ***!
@@ -2587,7 +2630,7 @@ var Accordion = /*#__PURE__*/ function () {
 /* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "../../../DTM/SVN/Websites/node_modules/core-js/modules/es.array.slice.js");
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var shared_ts_utils_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! shared/ts/utils/data */ "./shared/ts/utils/data.ts");
+/* harmony import */ var Shared_ts_utils_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! Shared/ts/utils/data */ "./Shared/ts/utils/data.ts");
 
 
 
@@ -2609,7 +2652,7 @@ var createElement = function createElement(tag, attributes) {
  * @returns HTMLElement
  */
 var setElementAttributes = function setElementAttributes(element, attributes) {
-    if (shared_ts_utils_data__WEBPACK_IMPORTED_MODULE_3__.isObject(attributes)) {
+    if (attributes && Shared_ts_utils_data__WEBPACK_IMPORTED_MODULE_3__.isObject(attributes)) {
         Object.keys(attributes).forEach(function (attribute) {
             element.setAttribute(attribute, attributes[attribute]);
         });
@@ -2650,39 +2693,6 @@ var elementExists = function elementExists(element) {
 var enumerateElements = function enumerateElements(elements) {
     var ar = [].slice.call(elements);
     return ar;
-};
-
-
-/***/ }),
-
-/***/ "./shared/ts/utils/data.ts":
-/*!*********************************!*\
-  !*** ./shared/ts/utils/data.ts ***!
-  \*********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isObject": function() { return /* binding */ isObject; }
-/* harmony export */ });
-/* unused harmony exports isFunction, isString, isNumber, isArray, isNullOrUndefined */
-var isFunction = function isFunction(type) {
-    return typeof type === "function";
-};
-var isString = function isString(type) {
-    return typeof type === "string";
-};
-var isNumber = function isNumber(type) {
-    return typeof type === "number";
-};
-var isArray = function isArray(type) {
-    return Array.isArray(type);
-};
-var isObject = function isObject(type) {
-    return type === Object(type) && !isArray(type);
-};
-var isNullOrUndefined = function isNullOrUndefined(type) {
-    return type !== null && typeof type !== "undefined";
 };
 
 
@@ -2768,6 +2778,8 @@ var __webpack_exports__ = {};
 // components
 
 var toggleAccordionToggleState = function toggleAccordionToggleState(accordion, control) {
+    if (!accordion)
+        return;
     if (control.checked) {
         accordion.setAttribute("data-accordion-toggle", "");
         return;
@@ -2775,6 +2787,8 @@ var toggleAccordionToggleState = function toggleAccordionToggleState(accordion, 
     accordion.removeAttribute("data-accordion-toggle");
 };
 var toggleAccordionContainerState = function toggleAccordionContainerState(accordion, control) {
+    if (!accordion)
+        return;
     if (control.checked) {
         accordion.setAttribute("data-accordion-many-containers", "");
         return;
@@ -2782,7 +2796,6 @@ var toggleAccordionContainerState = function toggleAccordionContainerState(accor
     accordion.removeAttribute("data-accordion-many-containers");
 };
 var accordion = new Shared_ts_components_accordion__WEBPACK_IMPORTED_MODULE_0__.default();
-console.log(accordion);
 var accordionToggleControl = document.querySelector("#accordion-toggle");
 accordionToggleControl.addEventListener("change", function () {
     toggleAccordionToggleState(accordion.root, accordionToggleControl);
