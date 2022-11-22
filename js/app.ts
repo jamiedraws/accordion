@@ -46,3 +46,5 @@ const accordionContainerControl = document.querySelector(
 accordionContainerControl.addEventListener("change", () => {
     toggleAccordionContainerState(accordion.root, accordionContainerControl);
 });
+
+console.log("testing");
